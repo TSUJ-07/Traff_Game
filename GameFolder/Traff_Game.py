@@ -2,6 +2,8 @@ import pygame, sys
 from pygame.locals import *
 #This is just a template for the window
 # Discard anything that is not related to the game
+#Changes can also be made through Github without the use of PyCharm
+#Always remember to 'commit' when finished writing code so the entire source is updated
 
 pygame.init()
 FPS= 60
