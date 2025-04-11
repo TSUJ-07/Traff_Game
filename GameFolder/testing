@@ -1,0 +1,106 @@
+import pygame, sys, random
+from pygame.locals import *
+
+pygame.init()
+resolution = (500, 750)
+screen = pygame.display.set_mode(resolution)
+clock = pygame.time.Clock()
+black = color=(0, 0, 0)
+FPS = 60
+# random speed variables
+def random_speed():
+    return random.randint(1,6)
+
+speed1 = [0,random_speed()]
+speed2 = [0,random_speed()]
+speed3 = [0,random_speed()]
+speed4 = [0,random_speed()]
+
+# create objects: user car, oncoming traffic, grass, road
+car = pygame.Rect(225, 625, 50, 100)
+user_car = pygame.Surface((car.w, car.h))
+user_car.fill((0, 0, 255))
+
+traffic1 = pygame.Rect(100, 0, 50, 100)
+traffic1_surface = pygame.Surface((traffic1.w, traffic1.h))
+traffic1_surface.fill((255, 0, 0))
+
+traffic2 = pygame.Rect(200, 0, 50, 100)
+traffic2_surface = pygame.Surface((traffic2.w, traffic2.h))
+traffic2_surface.fill((255, 0, 0))
+
+traffic3 = pygame.Rect(300, 0, 50, 100)
+traffic3_surface = pygame.Surface((traffic3.w, traffic3.h))
+traffic3_surface.fill((255, 0, 0))
+
+traffic4 = pygame.Rect(400, 0, 50, 100)
+traffic4_surface = pygame.Surface((traffic4.w, traffic4.h))
+traffic4_surface.fill((255, 0, 0))
+
+grass_left = pygame.Rect(0, 0, 50, 750)
+grass_surface = pygame.Surface((grass_left.w, grass_left.h))
+grass_surface.fill((0, 255, 0))
+
+grass_right = pygame.Rect(450, 0, 50, 750)
+grass_surface2 = pygame.Surface((grass_right.w, grass_right.h))
+grass_surface2.fill((0, 255, 0))
+
+# main program
+running = True
+while running:
+    # user input statements:
+    keys = pygame.key.get_pressed()
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            sys.exit(0)
+        if keys[pygame.K_ESCAPE]:
+            sys.exit(0)
+    if keys[pygame.K_a]:
+        car.x -= 5
+    if keys[pygame.K_d]:
+        car.x +=5
+
+    # position/speed statements:
+    if traffic1.y>=650:
+        traffic1.y = 0
+        speed1[1] = random_speed() #resets random speed each loop
+    if traffic2.y>=650:
+        traffic2.y = 0
+        speed2[1] = random_speed()
+    if traffic3.y>=650:
+        traffic3.y = 0
+        speed3[1] = random_speed()
+    if traffic4.y>=650:
+        traffic4.y = 0
+        speed4[1] = random_speed()
+    traffic1 = traffic1.move(speed1)
+    traffic2 = traffic2.move(speed2)
+    traffic3 = traffic3.move(speed3)
+    traffic4 = traffic4.move(speed4)
+
+
+    # collision statements
+    if car.colliderect(traffic1):
+        print("there has been a collision!")
+        break
+    if car.colliderect(traffic2):
+        print("there has been a collision!")
+        break
+    if car.colliderect(traffic3):
+        print("there has been a collision!")
+        break
+    if car.colliderect(traffic4):
+        print("there has been a collision!")
+        break
+
+    # screen blits
+    screen.fill(black)
+    screen.blit(grass_surface, grass_left.topleft)
+    screen.blit(grass_surface2, grass_right.topleft)
+    screen.blit(traffic1_surface, traffic1.topleft)
+    screen.blit(traffic2_surface, traffic2.topleft)
+    screen.blit(traffic3_surface, traffic3.topleft)
+    screen.blit(traffic4_surface, traffic4.topleft)
+    screen.blit(user_car, car.topleft)
+    pygame.display.flip()
+    clock.tick(FPS)
