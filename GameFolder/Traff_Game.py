@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame, sys, Config, Cars_Obstacle, Player, RoadWork
 from pygame.locals import *
 #This is just a template for the window
 # Discard anything that is not related to the game
