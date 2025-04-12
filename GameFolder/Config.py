@@ -37,3 +37,7 @@ def car_speed_random():
     return random.randint(MIN_SPEED, MAX_SPEED)
 def screen():
     return pygame.display.set_mode(RESOLUTION)
+
+#Sounds
+#---Sound_Bar---#
+#Insert{}
