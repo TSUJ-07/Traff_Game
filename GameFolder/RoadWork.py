@@ -13,7 +13,7 @@ class Road_Work:
             Config.RESOLUTION[0] - Config.GRASS, #x
             0, #y
             Config.GRASS, #width for object
-            Config.RESOLUTION[0] #height we want for object
+            Config.RESOLUTION[1] #height we want for object
         )
 
         self.grass_surf2= pygame.Surface((Config.GRASS, Config.RESOLUTION[1]))
