@@ -1,7 +1,7 @@
 import pygame, Config
 pygame.init()
 #Made to monitor movement of oncoming "Traffic" descending from the top screen
-#something
+
 
 class Obstacle:
     def __init__(self, car_in_lane):

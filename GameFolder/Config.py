@@ -1,6 +1,6 @@
 import pygame, random
 pygame.init()
-#hjgjbhgbv
+
 #Display Settings
 RESOLUTION = (500, 750)
 FPS= 60
@@ -29,6 +29,7 @@ MIN_SPEED=2
 MAX_SPEED=6
 #---Obstacle_Sprites---#
 #Insert{}
+
 
 #Road Display
 GRASS= 50
