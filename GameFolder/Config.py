@@ -1,6 +1,6 @@
 import pygame, random
 pygame.init()
-
+#hjgjbhgbv
 #Display Settings
 RESOLUTION = (500, 750)
 FPS= 60
