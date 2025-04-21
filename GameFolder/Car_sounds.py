@@ -12,7 +12,7 @@ WHITE = (255,255,255)
 SP = 12
 SPRI = r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\Whimsical-Car-Cartoon-Top-View-Graphic-PNG-300x225.png"
 
-DS = r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\spongebob-fail.mp3"
+DS = r"C:\Users\panda\PycharmProjects\Traff_Game\GameFolder\sound\crash_sound.mp3"
 BackGround = r"C:\Users\panda\PycharmProjects\5HourGrind\.venv\Scripts\bg.png"
 Meteor_Speed = {
     "big": 5,

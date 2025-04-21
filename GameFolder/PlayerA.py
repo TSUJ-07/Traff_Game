@@ -59,7 +59,7 @@ import sys
 
 myImage = pygame.image.load(r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\Whimsical-Car-Cartoon-Top-View-Graphic-PNG-300x225.png").convert_alpha()
 Image_rect= myImage.get_rect(topleft = (0, 0))
-DeathNoise = pygame.mixer.Sound(r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\spongebob-fail.mp3")
+DeathNoise = pygame.mixer.Sound(r"C:\Users\panda\PycharmProjects\Traff_Game\GameFolder\sound\crash_sound.mp3")
 
 class Player:
     def __init__(self):
