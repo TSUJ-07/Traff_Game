@@ -13,6 +13,7 @@ screen= pygame.display.set_mode(resolution)
 timer= pygame.time.Clock()
 black= Config.BLACK
 blue= Config.BLUE
+white= Config.WHITE
 
 
 #Reusable alpha screen for transparency
@@ -20,13 +21,13 @@ blue= Config.BLUE
 def display_window(screen):
     var = pygame.Surface(screen.get_size())
     var.set_alpha(100)
-    var.fill(black)
+    var.fill((128,128,128))
     screen.blit(var, (0,0))
 
 #getting font for transparent start-up window OR any text_layout for the screen; centered
 def prep_text(message= "PRESS ANY KEY TO START"):
     fonting = pygame.font.Font(None, 25)
-    render_text = fonting.render(message, True, Config.WHITE)
+    render_text = fonting.render(message, True, white)
     shade_window = render_text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
     screen.blit(render_text, shade_window)
     pygame.display.flip()
