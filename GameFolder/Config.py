@@ -28,13 +28,14 @@ TRAFF_LANES= [100,200,300,400] # positions on the screen; x-axis
 MIN_SPEED=2
 MAX_SPEED=6
 #---Obstacle_Sprites---#
-IMG_SELECTION= {LOAD("Silver_MERC.png"),
-                LOAD("vecteezy_modern_green.png"),
-                LOAD("vecteezy_sport_car.png"),
-                LOAD("vecteezy_white_car.png"),
-                LOAD("wrist-style-pinterest-bugatti.png"),
-                LOAD(""),
-                }
+IMG_SELECTION= {
+    LOAD("Silver_MERC.png"),
+    LOAD("vecteezy_modern_green.png"),
+    LOAD("vecteezy_sport_car.png"),
+    LOAD("vecteezy_white_car.png"),
+    LOAD("wrist-style-pinterest-bugatti.png"),
+    LOAD(""),
+    }
 
 
 #Road Display
