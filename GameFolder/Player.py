@@ -1,7 +1,7 @@
 import pygame, Config
 pygame.init()
 
-class Player:
+class User:
     def __init__(self):
         self.rect= pygame.Rect(
             Config.PLAYER_POS[0],
@@ -26,12 +26,8 @@ class Player:
                 self.roam = False
                 return True #Function is True; COLLISION
             else:
+                self.roam= True
                 return False #Function remains False; NO COLLISION
-
-    # def game_restart(): #If restart button is pressed
-    #     self.rect.x= Config.PLAYER_POS[0]
-    #     self.rect.y= Config.PLAYER_POS[1]
-    #     self.roam= True
 
     def player_draw(self,screen):
         screen.blit(self.player_surf, self.rect.topleft)
