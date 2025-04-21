@@ -6,37 +6,77 @@ from pygame.locals import *
 #Always remember to 'commit' when finished writing code so the entire source is updated
 
 pygame.init()
-FPS= 60
-resolution= (400,400)
+pygame.display.set_caption("Traffic_Game")
+FPS= Config.FPS
+resolution= Config.RESOLUTION
 screen= pygame.display.set_mode(resolution)
 timer= pygame.time.Clock()
-black= (0,0,0)
-blue= (0,0,255)
+black= Config.BLACK
+blue= Config.BLUE
 
 
-rect= pygame.Rect(0,0,20,20)
+#Reusable alpha screen for transparency
+#Not creating buttons to click on the screen, that's so difficult, so tedious
+def display_window(screen):
+    var = pygame.Surface(screen.get_size())
+    var.set_alpha(100)
+    var.fill(black)
+    screen.blit(var, (0,0))
 
-speed= 50
-upNdown= True
-while True:
-    keys = pygame.key.get_pressed()
-    for x in pygame.event.get():
-        if x.type == pygame.QUIT:
-            sys.exit(0)
-        if x.type == KEYDOWN and x.type == [K_ESCAPE]:
-            sys.exit(0)
-
-    screen.fill(black)
-
-    if upNdown:
-        rect.y -=speed
-        if rect.top < 0:
-            upNdown= False
-    else:
-        rect.y += speed
-        if rect.top > resolution[1]:
-            upNdown= True
-
-    pygame.draw.rect(screen,blue,rect)
+#getting font for transparent start-up window OR any text_layout for the screen; centered
+def prep_text(message= "PRESS ANY KEY TO START"):
+    fonting = pygame.font.Font(None, 25)
+    render_text = fonting.render(message, True, Config.WHITE)
+    shade_window = render_text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
+    screen.blit(render_text, shade_window)
     pygame.display.flip()
-    timer.tick(FPS)
+
+#In event log
+def event_wait():
+    while True:
+        for i in pygame.event.get(): #Event handling to start game
+            if i.type == pygame.QUIT:
+                pygame.quit()
+                print("Thanks for playing")
+                sys.exit(0)
+            elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
+                #Enter start-up sound
+                return
+def failure(): #Created to search options between KEY_r and KEY_q to exit or restart game!!
+    display_window(screen) #Display cover
+    prep_text("Press [R] to Restart -- Press [Q] to Quit")
+    while True:
+        for event in pygame.event.get(): #event handling for only the restart and quit option
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                print("Thanks for playing")
+                sys.exit(0)
+            elif event.type == KEYDOWN:
+                if event.key == pygame.K_r:
+                    return "Restart"
+                elif event.key == pygame.K_q:
+                    return "Quit"
+
+#-----MAIN-----#
+display_window(screen)
+prep_text()
+event_wait()
+def game_loop():
+    collide_list = []
+    Player.User= Player.User()
+    while True:
+        for i in pygame.event.get():
+            if i.type == pygame.QUIT:
+                pygame.quit()
+                print("Thanks for playing")
+                sys.exit(0)
+            if Player.User.collide_check(collide_list):
+                question= failure()
+                if question == "Restart":
+                    game_loop()
+                else:
+                    pygame.quit()
+                    print("Thanks for playing")
+                    sys.exit(0)
+        pygame.display.flip()
+        timer.tick(FPS)
