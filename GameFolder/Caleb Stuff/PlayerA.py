@@ -1,6 +1,4 @@
 import pygame
-import Car_sounds #import Config
-import sys
 
 myImage = pygame.image.load(r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\Whimsical-Car-Cartoon-Top-View-Graphic-PNG-300x225.png").convert_alpha()
 Image_rect= myImage.get_rect(topleft = (0, 0))

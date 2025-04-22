@@ -1,4 +1,3 @@
-import os
 import HighScore
 import pygame
 import PlayerA
@@ -53,7 +52,7 @@ while running:
             meteor = Meteor.Meteor()
             meteors.append(meteor)
             meteor.spawn_sound.play()
-            pygame.time.set_timer(Meteor_Event, random.randint(250, 500))
+            pygame.time.set_timer(Meteor_Event, random.randint(500, 750))
             pass
 
     screen.blit(BG, (260, 0))
@@ -68,6 +67,8 @@ while running:
             meteors.remove(meteor)
             player.deadSounds.play()
 
+
+#I like this ngl --------------------------------------------------------------------
     player.move(keys)
     if not player.alive:
 
@@ -103,6 +104,6 @@ while running:
         score = int(elasped_time * 5 * 14)
         score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
         screen.blit(score_surf, (1150, 120))
-
+#-----------------------------------------------------------------------------------
     pygame.display.flip()
     clock.tick(60)
