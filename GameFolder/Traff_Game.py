@@ -68,7 +68,8 @@ prep_text()
 event_wait()
 def game_loop():
     collide_list = []
-    player = Player.User()
+    player= Player.User()
+    road= RoadWork.Road_Work()
     pygame.time.set_timer(Config.XEVENT,1000)
 
     while True:
@@ -76,18 +77,22 @@ def game_loop():
             if i.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit(0)
-            # if i.type == Config.XEVENT:
-            #     collide_list.append(Cars_Obstacle.Obstacle())#add car to collide list
-            if player.collide_check(collide_list):
-                display_window(screen)  # Display cover
-                #Enter Failure sound --> {Config.MP3["failure"].play()}
-                record(player, collide_list) # Highscore
-                question= failure()
-                if question == "Restart":
-                    return game_loop()
-                else:
-                    pygame.quit()
-                    sys.exit(0)
+            elif i.type == Config.XEVENT:
+                collide_list.append(Cars_Obstacle.Obstacle()) #add car to collide list
+
+        keys = pygame.key.get_pressed()
+        player.move_user(keys)
+        if player.collide_check(collide_list):
+            display_window(screen)  # Display cover
+            #Enter Failure sound --> {Config.MP3["failure"].play()}
+            record(player, collide_list) # Highscore
+            question= failure()
+            if question == "Restart":
+                return game_loop()
+            else:
+                pygame.quit()
+                sys.exit(0)
+
         pygame.display.flip()
         timer.tick(FPS)
 print("Thanks for playing!")

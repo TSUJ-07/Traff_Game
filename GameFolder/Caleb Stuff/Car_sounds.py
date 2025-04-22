@@ -24,7 +24,7 @@ Meteor_Path = {
     "big":[r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\R (1).png"],
     "medium":[r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\UI-Goku-Striking-Pose-Energy-PNG.png"],
     "small":[r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\PCar.png",r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\vecteezy_sport-car-isolated-on-transparent-background-3d-rendering_19612927.png",r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\vecteezy_white-sport-car-on-transparent-background-3d-rendering_25308299.png"],
-    "tiny":[r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\—Pngtree—red sports car top view_8950912.png", r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\—Pngtree—f1 car top view_2960088.png"],
+    "tiny":[r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\sport_red.png", r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\—Pngtree—f1 car top view_2960088.png"],
 }
 Meteor_Spawn_Sounds = [
     r"C:\Users\panda\PycharmProjects\PythonProject21\.venv\Scripts\myinstants.mp3",

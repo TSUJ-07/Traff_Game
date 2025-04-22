@@ -6,25 +6,25 @@ pygame.init()
 class Obstacle:
     def __init__(self):
         self.roam= True
-        self.lanes= random.choice(Config.TRAFF_LANES)
-        self.speed= [0, Config.car_speed_random()]
+        lanes= random.choice(Config.OBS_LANES)
+        self.speed= Config.car_speed_random()
         self.rect= pygame.Rect(
-            self.lanes, #x
-            -Config.TRAFF_HEIGHT, #y
-            Config.TRAFF_WIDTH, #object width
-            Config.TRAFF_HEIGHT #object height
+            lanes - Config.OBS_WIDTH//2, #x
+            -Config.OBS_HEIGHT, #y
+            Config.OBS_WIDTH, #object width
+            Config.OBS_HEIGHT #object height
         )
-        self.surface= pygame.Surface(Config.TRAFF_WIDTH, Config.TRAFF_HEIGHT)
+        self.surface= pygame.Surface((Config.OBS_WIDTH, Config.OBS_HEIGHT))
         self.surface.fill(Config.RED)
 
     def move_obs(self):
-        self.rect = self.rect.move(self.speed)
-        if self.rect.y > Config.RESOLUTION[1]:
+        self.rect.y += self.speed
+        if self.rect.top > Config.RESOLUTION[1]:
             self.reset()
 
     def reset(self):
-        self.rect.y = -Config.TRAFF_HEIGHT
-        self.speed[1]= Config.car_speed_random()
+        self.rect.y = -Config.OBS_HEIGHT
+        self.speed= Config.car_speed_random()
 
     def draw_obs(self, screen):
-        screen.blit(self.surface, self.rect.topleft)
+        screen.blit(self.surface, self.rect)
