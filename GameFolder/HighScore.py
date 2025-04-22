@@ -7,5 +7,3 @@ def load_high_score():
 def save_high_score(score):
     with open("highscore.txt", "w") as file:
         file.write(str(score))
-
-

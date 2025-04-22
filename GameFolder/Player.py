@@ -16,7 +16,7 @@ class User:
 
     def move_user(self, keys):
         if keys[pygame.K_a] and self.rect.x > Config.GRASS:
-            self.rect.x -= self.player_surf
+            self.rect.x -= self.player_speed
         if keys[pygame.K_d] and self.rect.x < Config.BOUND_ON_RIGHT:
             self.rect.x += self.player_speed
 

@@ -25,7 +25,7 @@ LOAD= pygame.image.load
 #Obstacle Settings
 TRAFF_WIDTH= 50
 TRAFF_HEIGHT= 100
-TRAFF_LANES= [100,200,300,400] # positions on the screen; x-axis
+TRAFF_LANES= (100,200,300,400) # positions on the screen; x-axis
 MIN_SPEED=2
 MAX_SPEED=6
 #---Obstacle_Sprites---#
@@ -45,14 +45,16 @@ ROAD_SIZE= RESOLUTION[0] - (GRASS *2)
 #---Random speed for traffic---#
 def car_speed_random():
     return random.randint(MIN_SPEED, MAX_SPEED)
-def screen():
-    return pygame.display.set_mode(RESOLUTION)
 
 #Sounds
 #---Sound_Bar---#
 SOUND= pygame.mixer.Sound
-SOUND_SELECTION= {}
-
+MP3= {
+    "start" : SOUND("start_and_rev_sound.mp3"),
+    "failure" : SOUND("end sound.mp3"),
+    "crash" : SOUND("crash_sound.mp3"),
+    "swipe" : SOUND("swipe_sound.mp3"),
+}
 #Diffuclty Builder??
 # SPEED_SCALING= 0.5
 

@@ -8,8 +8,7 @@ from pygame.locals import *
 pygame.init()
 pygame.display.set_caption("Traffic_Game")
 FPS= Config.FPS
-resolution= Config.RESOLUTION
-screen= pygame.display.set_mode(resolution)
+screen= pygame.display.set_mode(Config.RESOLUTION)
 timer= pygame.time.Clock()
 black= Config.BLACK
 blue= Config.BLUE
@@ -38,11 +37,10 @@ def event_wait():
         for i in pygame.event.get(): #Event handling to start game
             if i.type == pygame.QUIT:
                 pygame.quit()
-                print("Thanks for playing")
                 sys.exit(0)
             elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
-                #Enter start-up sound
-                return
+                return #Enter start-up sound --> {Config.MP3["start"].play()}
+
 def failure(): #Created to search options between KEY_r and KEY_q to exit or restart game!!
     display_window(screen) #Display cover
     prep_text("Press [R] to Restart -- Press [Q] to Quit")
@@ -50,7 +48,6 @@ def failure(): #Created to search options between KEY_r and KEY_q to exit or res
         for event in pygame.event.get(): #event handling for only the restart and quit option
             if event.type == pygame.QUIT:
                 pygame.quit()
-                print("Thanks for playing")
                 sys.exit(0)
             elif event.type == KEYDOWN:
                 if event.key == pygame.K_r:
@@ -64,20 +61,23 @@ prep_text()
 event_wait()
 def game_loop():
     collide_list = []
-    Player.User= Player.User()
+    p_unit= Player.User()
     while True:
         for i in pygame.event.get():
             if i.type == pygame.QUIT:
                 pygame.quit()
-                print("Thanks for playing")
                 sys.exit(0)
-            if Player.User.collide_check(collide_list):
+            if i.type == Config.XEVENT:
+                collide_list.append(Cars_Obstacle.Obstacle())#add car to collide list
+            if Player.User.collide_check(p_unit, collide_list):
+                #Enter Failure sound --> {Config.MP3["failure"].play()}
                 question= failure()
                 if question == "Restart":
-                    game_loop()
+                    return game_loop()
                 else:
                     pygame.quit()
-                    print("Thanks for playing")
                     sys.exit(0)
         pygame.display.flip()
         timer.tick(FPS)
+game_loop()
+print("Thanks for playing")

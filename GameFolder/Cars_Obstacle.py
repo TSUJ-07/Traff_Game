@@ -1,14 +1,15 @@
-import pygame, Config
+import pygame, Config, random
 pygame.init()
 #Made to monitor movement of oncoming "Traffic" descending from the top screen
 
 
 class Obstacle:
-    def __init__(self, car_in_lane):
+    def __init__(self):
         self.roam= True
+        self.lanes= random.choice(Config.TRAFF_LANES)
         self.speed= [0, Config.car_speed_random()]
         self.rect= pygame.Rect(
-            Config.TRAFF_LANES[car_in_lane], #x
+            self.lanes, #x
             -Config.TRAFF_HEIGHT, #y
             Config.TRAFF_WIDTH, #object width
             Config.TRAFF_HEIGHT #object height
