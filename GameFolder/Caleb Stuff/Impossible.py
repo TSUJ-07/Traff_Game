@@ -1,9 +1,9 @@
-import HighScore
+from GameFolder import HighScore
 import pygame
 import PlayerA
 import Meteor
 import random
-from HighScore import save_high_score
+from GameFolder.HighScore import save_high_score
 
 pygame.init()
 pygame.mixer.init()

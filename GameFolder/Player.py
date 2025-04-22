@@ -21,13 +21,12 @@ class User:
             self.rect.x += self.player_speed
 
     def collide_check(self, collide_list):
+        self.roam = True
         for car in collide_list:
             if self.rect.colliderect(car.rect):
                 self.roam = False
                 return True #Function is True; COLLISION
-            else:
-                self.roam= True
-                return False #Function remains False; NO COLLISION
+        return False #Function remains False; NO COLLISION
 
     def player_draw(self,screen):
         screen.blit(self.player_surf, self.rect.topleft)

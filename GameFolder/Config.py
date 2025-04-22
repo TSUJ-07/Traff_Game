@@ -20,7 +20,8 @@ PLAYER_SPEED= 5
 
 #---Player_Sprites---#
 LOAD= pygame.image.load
-#Insert{}
+#PLAYER_IMG{}
+
 
 #Obstacle Settings
 TRAFF_WIDTH= 50
@@ -29,7 +30,7 @@ TRAFF_LANES= (100,200,300,400) # positions on the screen; x-axis
 MIN_SPEED=2
 MAX_SPEED=6
 #---Obstacle_Sprites---#
-# IMG_SELECTION= {
+# CAR_IMG= {
 #     LOAD("Silver_MERC.png"),
 #     LOAD("vecteezy_modern_green.png"),
 #     LOAD("vecteezy_sport_car.png"),
@@ -50,10 +51,10 @@ def car_speed_random():
 #---Sound_Bar---#
 SOUND= pygame.mixer.Sound
 MP3= {
-    "start" : SOUND("start_and_rev_sound.mp3"),
-    "failure" : SOUND("end sound.mp3"),
-    "crash" : SOUND("crash_sound.mp3"),
-    "swipe" : SOUND("swipe_sound.mp3"),
+    "start" : SOUND("sound/start_and_rev_sound.mp3"),
+    "failure" : SOUND("sound/end sound.mp3"),
+    "crash" : SOUND("sound/crash_sound.mp3"),
+    "swipe" : SOUND("sound/swipe_sound.mp3"),
 }
 #Diffuclty Builder??
 # SPEED_SCALING= 0.5

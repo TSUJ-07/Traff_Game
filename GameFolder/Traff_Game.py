@@ -1,8 +1,8 @@
-import pygame, sys, Config, Cars_Obstacle, Player, RoadWork
+import pygame, sys, Config, Cars_Obstacle, Player, RoadWork, HighScore
 from pygame.locals import *
 #This is just a template for the window
 # Discard anything that is not related to the game
-#Changes can also be made through Github without the use of PyCharm
+#Changes can also be made through GitHub without the use of PyCharm
 #Always remember to 'commit' when finished writing code so the entire source is updated
 
 pygame.init()
@@ -24,10 +24,10 @@ def display_window(screen):
     screen.blit(var, (0,0))
 
 #getting font for transparent start-up window OR any text_layout for the screen; centered
-def prep_text(message= "PRESS ANY KEY TO START"):
-    fonting = pygame.font.Font(None, 25)
-    render_text = fonting.render(message, True, white)
-    shade_window = render_text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
+def prep_text(message= "PRESS ANY KEY TO START", size= 25, color= white, y_scale= 2):
+    fonting = pygame.font.Font(None, size)
+    render_text = fonting.render(message, True, color)
+    shade_window = render_text.get_rect(midtop= (screen.get_width() // 2, screen.get_height() // y_scale))
     screen.blit(render_text, shade_window)
     pygame.display.flip()
 
@@ -41,9 +41,16 @@ def event_wait():
             elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
                 return #Enter start-up sound --> {Config.MP3["start"].play()}
 
+def record(player, collide_list, score= 0):
+    high_score= HighScore.load_high_score()
+    if player.collide_check(collide_list) and score > high_score:
+        high_score = score
+        HighScore.save_high_score(high_score)
+        prep_text("You Have Crashed!!!", size= 48, color= Config.RED, y_scale= 1)
+        prep_text(f"High Score: {high_score}", size=32, color= white)
+
 def failure(): #Created to search options between KEY_r and KEY_q to exit or restart game!!
-    display_window(screen) #Display cover
-    prep_text("Press [R] to Restart -- Press [Q] to Quit")
+    prep_text("Press [R] to Restart -- Press [Q] to Quit", y_scale= 3)
     while True:
         for event in pygame.event.get(): #event handling for only the restart and quit option
             if event.type == pygame.QUIT:
@@ -61,16 +68,20 @@ prep_text()
 event_wait()
 def game_loop():
     collide_list = []
-    p_unit= Player.User()
+    player = Player.User()
+    pygame.time.set_timer(Config.XEVENT,1000)
+
     while True:
         for i in pygame.event.get():
             if i.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit(0)
-            if i.type == Config.XEVENT:
-                collide_list.append(Cars_Obstacle.Obstacle())#add car to collide list
-            if Player.User.collide_check(p_unit, collide_list):
+            # if i.type == Config.XEVENT:
+            #     collide_list.append(Cars_Obstacle.Obstacle())#add car to collide list
+            if player.collide_check(collide_list):
+                display_window(screen)  # Display cover
                 #Enter Failure sound --> {Config.MP3["failure"].play()}
+                record(player, collide_list) # Highscore
                 question= failure()
                 if question == "Restart":
                     return game_loop()
@@ -79,5 +90,4 @@ def game_loop():
                     sys.exit(0)
         pygame.display.flip()
         timer.tick(FPS)
-game_loop()
-print("Thanks for playing")
+print("Thanks for playing!")
