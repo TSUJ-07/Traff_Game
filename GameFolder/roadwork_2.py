@@ -4,8 +4,19 @@ import sys
 import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
+from GameFolder import HighScore
+from GameFolder.HighScore import save_high_score
 
 
+font = pygame.font.Font(None, 36)
+
+start_ticka = pygame.time.get_ticks()
+
+pygame.display.set_caption("ANIME X TRAFF")
+
+score = 0
+
+high_score = HighScore.load_high_score()
 def collision(user_car, obstacles):
     for obstacle in obstacles:
         if user_car.colliderect(obstacle['rect']):
@@ -82,16 +93,35 @@ def user_movement():
         traffic_obj.update_obstacles()
 
         # collision check?
-        if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
-            crash_sound.play()
-            if crash_sound.play():
-                continue
+
 
 
         # drawing
         road.draw_road(screen)
         road.draw_grass(screen)
         traffic_obj.draw(screen)
+
+        elasped_time = (pygame.time.get_ticks() - start_ticka) / 1000
+        timer_surf = font.render(f"Timer: {elasped_time:.2f} s", True, (0, 0, 5))
+        screen.blit(timer_surf, (330, 35))
+        score = int(elasped_time * 5 * 14)
+        score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
+        screen.blit(score_surf, (330, 65))
+
+        if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
+            crash_sound.play()
+            # font = pygame.font.Font(None, 48)
+            text_surf = font.render("You Have Crashed!!!", True, (255, 2, 2))
+            text_surf2 = font.render(f"Your Score is: {score}", True, (255, 255, 255))
+            high_score_surf = font.render(f"High Score: {high_score}", True, (255, 255, 2))
+            text_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 2))
+            text_rect2 = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 3))
+            high_score_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 4))
+            screen.blit(high_score_surf, high_score_rect)
+            screen.blit(text_surf, text_rect)
+            screen.blit(text_surf2, text_rect2)
+            if crash_sound.play():
+                continue
 
         pygame.display.flip()
         clock.tick(60)
