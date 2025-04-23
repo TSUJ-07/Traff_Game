@@ -26,7 +26,7 @@ def event_wait():
                 pygame.quit()
                 sys.exit(0)
             elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
-                return config_2.MP3["start"].play()
+                return config_2.MP3["start"].play(
 
 def main():
     pygame.init()
