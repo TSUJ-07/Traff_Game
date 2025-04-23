@@ -1,4 +1,5 @@
 import pygame
+pygame.init()
 import sys
 import pygame.mixer
 from traffic_2 import Traffic
@@ -20,6 +21,7 @@ class RoadWork:
         self.grass_surface = pygame.Surface((grass_width, resolution[1]))
         self.grass_right = pygame.Rect(resolution[0] - grass_width, 0, grass_width, resolution[1])
         self.grass_surf2 = pygame.Surface((grass_width, resolution[1]))
+        self.grass_surface.fill(green)
         self.grass_surf2.fill(green)
         self.background_road = pygame.image.load("img/Background_Road.png").convert()
 
