@@ -1,5 +1,5 @@
 from roadwork_2 import *
-
+import config_2
 
 screen = pygame.display.set_mode(resolution)
 road = RoadWork(resolution, 50, (0, 255, 0))
