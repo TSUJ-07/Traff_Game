@@ -123,5 +123,6 @@ def user_movement():
             if config_2.MP3["crash"].play():
                 continue
 
+
         pygame.display.flip()
         clock.tick(60)
