@@ -10,6 +10,7 @@ def collision(user_car, obstacles):
         if user_car.colliderect(obstacle['rect']):
             print("Collision Detected!")
             crash_sound.play()
+
             return True
     return False
 
@@ -54,15 +55,25 @@ def user_movement():
         if keys[pygame.K_a] and traffic_obj.user_car_rect.x > 50:
             traffic_obj.user_car_rect.x -= player_speed
             swipe_sound.play()
+            if swipe_sound.play():
+                continue
+
         if keys[pygame.K_d] and traffic_obj.user_car_rect.x < 450:
             traffic_obj.user_car_rect.x += player_speed
             swipe_sound.play()
+            if swipe_sound.play():
+                continue
+
+
 
         traffic_obj.update_obstacles()
 
         # collision check?
         if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
-            pass
+            crash_sound.play()
+            if crash_sound.play():
+                continue
+
 
         # drawing
         road.draw_road(screen)
