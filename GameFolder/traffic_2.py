@@ -1,7 +1,6 @@
-import pygame
 import random
 import pygame.mixer
-from config_2 import *
+from GameFolder.config_2 import *
 
 
 
@@ -12,8 +11,11 @@ class Traffic:
         self.user_car_surface = pygame.transform.scale(self.user_car_surface, car_w_h)
         self.obstacles = []
         self.speeds = []
-
-        x_positions = [100, 200, 300, 400]  # lane positions
+        lanepos1 = (465/4)-25 #465 is road width, 25 is half of object width
+        lanepos2 = (lanepos1*2)+25
+        lanepos3 = (lanepos1*3)+50
+        lanepos4 = (lanepos1*4)+75
+        x_positions = [lanepos1, lanepos2, lanepos3, lanepos4]  # list lane positions
         for x in x_positions:  # create one obstacle per lane
             rect = pygame.Rect(x, 0, *car_w_h)  # start at top of screen
             surface = self.random_image()

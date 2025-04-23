@@ -18,10 +18,10 @@ CAR_IMG = {
 pygame.mixer.init()
 end_sound = pygame.mixer.Sound("sound/end sound.mp3")
 swipe_sound = pygame.mixer.Sound("sound/swipe_sound.mp3")
-crash_sound = pygame.mixer.Sound(r"C:\Users\panda\PycharmProjects\Traff_Game\GameFolder\sound\big_explosions2.mp3")
+crash_sound = pygame.mixer.Sound("sound/big_explosions2.mp3")
 
 # game settings
-resolution = (500, 750)
+resolution = (565, 750)
 car_w_h = (50, 100)
 user_pos = (225, 625)
 blue = (0, 0, 255)

@@ -3,7 +3,7 @@ pygame.init()
 import sys
 import pygame.mixer
 from traffic_2 import Traffic
-from config_2 import *
+from GameFolder.config_2 import *
 
 
 def collision(user_car, obstacles):
@@ -20,7 +20,7 @@ class RoadWork:
     def __init__(self, resolution, grass_width, green):
         self.grass_left = pygame.Rect(0, 0, grass_width, resolution[1])
         self.grass_surface = pygame.Surface((grass_width, resolution[1]))
-        self.grass_right = pygame.Rect(resolution[0] - grass_width, 0, grass_width, resolution[1])
+        self.grass_right = pygame.Rect(515, 0, grass_width, resolution[1])
         self.grass_surf2 = pygame.Surface((grass_width, resolution[1]))
         self.grass_surface.fill(green)
         self.grass_surf2.fill(green)
