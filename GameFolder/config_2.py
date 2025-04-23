@@ -9,7 +9,7 @@ CAR_IMG = {
     "car2": LOAD("img/vecteezy_modern_green.png"),
     "car3": LOAD("img/vecteezy_sport_car.png"),
     "car4": LOAD("img/vecteezy_white_car.png"),
-    "car5": LOAD("img/wrist-style-pinterest-bugatti.png"),
+    "car5": LOAD("wrist-style-pinterest-bugatti.png"),
     "car6": LOAD("img/PCar.png"),
     "car7": LOAD("img/sport_red.png"),
 }
@@ -18,7 +18,7 @@ CAR_IMG = {
 pygame.mixer.init()
 end_sound = pygame.mixer.Sound("sound/end sound.mp3")
 swipe_sound = pygame.mixer.Sound("sound/swipe_sound.mp3")
-crash_sound = pygame.mixer.Sound("sound/crash_sound.mp3")
+crash_sound = pygame.mixer.Sound(r"C:\Users\panda\PycharmProjects\Traff_Game\GameFolder\sound\big_explosions2.mp3")
 
 # game settings
 resolution = (500, 750)
