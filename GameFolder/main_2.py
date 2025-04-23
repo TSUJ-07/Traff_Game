@@ -1,4 +1,3 @@
-import config_2
 from roadwork_2 import *
 
 
