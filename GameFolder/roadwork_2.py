@@ -12,8 +12,6 @@ font = pygame.font.Font(None, 36)
 
 start_ticka = pygame.time.get_ticks()
 
-pygame.display.set_caption("ANIME X TRAFF")
-
 score = 0
 
 high_score = HighScore.load_high_score()
