@@ -16,17 +16,15 @@ CAR_IMG = {
 
 #sounds
 pygame.mixer.init()
-end_sound = pygame.mixer.Sound("sound/end sound.mp3")
-swipe_sound = pygame.mixer.Sound("sound/swipe_sound.mp3")
-crash_sound = pygame.mixer.Sound("sound/big_explosions2.mp3")
 
-# sound= pygame.mixer.Sound
-# MP3= {
-#     "start" : sound("sound/start_and_rev_sound.mp3"),
-#     "failure" : sound("sound/end sound.mp3"),
-#     "crash" : sound("sound/crash_sound.mp3"),
-#     "swipe" : sound("sound/swipe_sound.mp3"),
-# }
+sound= pygame.mixer.Sound
+MP3= {
+    "start" : sound("sound/start_and_rev_sound.mp3"),
+    "failure" : sound("sound/end sound.mp3"),
+    "crash" : sound("sound/crash_sound.mp3"),
+    "swipe" : sound("sound/swipe_sound.mp3"),
+    "explosion" : sound("sound/big_explosions2.mp3"),
+}
 
 
 # game settings

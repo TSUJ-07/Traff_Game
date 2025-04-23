@@ -1,11 +1,11 @@
 import pygame
 pygame.init()
 import sys
+import config_2
 import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
 from GameFolder import HighScore
-from GameFolder.HighScore import save_high_score
 
 
 font = pygame.font.Font(None, 36)
@@ -21,8 +21,7 @@ def collision(user_car, obstacles):
     for obstacle in obstacles:
         if user_car.colliderect(obstacle['rect']):
             print("Collision Detected!")
-            crash_sound.play()
-
+            config_2.MP3["crash"].play()
             return True
     return False
 
@@ -72,20 +71,21 @@ def user_movement():
         # user movement
         keys = pygame.key.get_pressed()
         if keys[pygame.K_ESCAPE]:
-            end_sound.play()
+            config_2.MP3["failure"].play()
             print("Game Ended")
             pygame.quit()
             sys.exit(0)
         if keys[pygame.K_a] and traffic_obj.user_car_rect.x > 50:
             traffic_obj.user_car_rect.x -= player_speed
-            swipe_sound.play()
-            if swipe_sound.play():
+            config_2.MP3["swipe"].play()
+
+            if config_2.MP3["swipe"].play():
                 continue
 
         if keys[pygame.K_d] and traffic_obj.user_car_rect.x < 450:
             traffic_obj.user_car_rect.x += player_speed
-            swipe_sound.play()
-            if swipe_sound.play():
+            config_2.MP3["swipe"].play()
+            if config_2.MP3["swipe"].play():
                 continue
 
 
@@ -109,7 +109,7 @@ def user_movement():
         screen.blit(score_surf, (330, 65))
 
         if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
-            crash_sound.play()
+            config_2.MP3["crash"].play()
             # font = pygame.font.Font(None, 48)
             text_surf = font.render("You Have Crashed!!!", True, (255, 2, 2))
             text_surf2 = font.render(f"Your Score is: {score}", True, (255, 255, 255))
@@ -120,7 +120,7 @@ def user_movement():
             screen.blit(high_score_surf, high_score_rect)
             screen.blit(text_surf, text_rect)
             screen.blit(text_surf2, text_rect2)
-            if crash_sound.play():
+            if config_2.MP3["crash"].play():
                 continue
 
         pygame.display.flip()
