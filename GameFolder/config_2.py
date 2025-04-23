@@ -1,5 +1,6 @@
 import pygame
-
+from roadwork_2 import *
+from traffic_2 import *
 def LOAD(location):
     return pygame.image.load(location)
 
@@ -43,3 +44,4 @@ lane2 = (1 + 0.5) * lane_width
 lane3 = (2 + 0.5) * lane_width
 lane4 = (3 + 0.5) * lane_width
 grass_width = int(lane_width * 0.1)
+
