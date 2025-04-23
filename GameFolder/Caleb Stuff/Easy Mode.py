@@ -29,7 +29,7 @@ pygame.display.set_caption("Timer:")
 
 font = pygame.font.Font(None, 36)
 
-start_ticks = pygame.time.get_ticks()
+start_ticka = pygame.time.get_ticks()
 
 pygame.display.set_caption("ANIME X TRAFF")
 
@@ -74,7 +74,7 @@ while running:
             high_score = score
             save_high_score(high_score)
 
-        L_surf = pygame.Surface((1600, 1080))
+        L_surf = pygame.Surface((500, 750))
         L_surf.set_alpha(100)
         L_surf.fill((0, 0, 0))
         screen.blit(L_surf, (0, 0))
@@ -96,12 +96,12 @@ while running:
 
     else:
         player.draw(screen)
-        elasped_time = (pygame.time.get_ticks() - start_ticks) / 1000
+        elasped_time = (pygame.time.get_ticks() - start_ticka) / 1000
         timer_surf = font.render(f"Timer: {elasped_time:.2f} s", True, (25, 255, 5))
-        screen.blit(timer_surf, (1150, 60))
+        screen.blit(timer_surf, (400, 700))
         score = int(elasped_time * 5 * 14)
         score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
-        screen.blit(score_surf, (1150, 120))
+        screen.blit(score_surf, (400, 650))
 
     pygame.display.flip()
     clock.tick(60)
