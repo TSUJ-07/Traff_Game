@@ -4,6 +4,20 @@ import sys
 import pygame.mixer
 from traffic_2 import Traffic
 from config_2 import *
+import HighScore
+from GameFolder.HighScore import save_high_score
+
+
+score = 0
+font = pygame.font.Font(None, 36)
+high_score = HighScore.load_high_score()
+start_ticka = pygame.time.get_ticks()
+elasped_time = (pygame.time.get_ticks() - start_ticka) / 1000
+score = int(elasped_time * 5 * 14)
+
+if score > high_score:
+    high_score = score
+    save_high_score(high_score)
 
 
 def collision(user_car, obstacles):
@@ -73,6 +87,10 @@ def user_movement():
         # collision check?
         if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
             crash_sound.play()
+
+
+
+
             if crash_sound.play():
                 continue
 
@@ -81,6 +99,12 @@ def user_movement():
         road.draw_road(screen)
         road.draw_grass(screen)
         traffic_obj.draw(screen)
+        elasped_time = (pygame.time.get_ticks() - start_ticka) / 1000
+        timer_surf = font.render(f"Timer: {elasped_time:.2f} s", True, (0, 0, 5))
+        screen.blit(timer_surf, (330, 35))
+        score = int(elasped_time * 5 * 14)
+        score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
+        screen.blit(score_surf, (330, 55))
 
         pygame.display.flip()
         clock.tick(60)
