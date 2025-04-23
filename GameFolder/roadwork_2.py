@@ -4,8 +4,19 @@ import sys
 import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
+from GameFolder import HighScore
+from GameFolder.HighScore import save_high_score
 
 
+font = pygame.font.Font(None, 36)
+
+start_ticka = pygame.time.get_ticks()
+
+pygame.display.set_caption("ANIME X TRAFF")
+
+score = 0
+
+high_score = HighScore.load_high_score()
 def collision(user_car, obstacles):
     for obstacle in obstacles:
         if user_car.colliderect(obstacle['rect']):
@@ -81,6 +92,13 @@ def user_movement():
         road.draw_road(screen)
         road.draw_grass(screen)
         traffic_obj.draw(screen)
+
+        elasped_time = (pygame.time.get_ticks() - start_ticka) / 1000
+        timer_surf = font.render(f"Timer: {elasped_time:.2f} s", True, (0, 0, 5))
+        screen.blit(timer_surf, (330, 35))
+        score = int(elasped_time * 5 * 14)
+        score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
+        screen.blit(score_surf, (330, 65))
 
         pygame.display.flip()
         clock.tick(60)
