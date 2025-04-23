@@ -15,6 +15,7 @@ class Traffic:
         lanepos2 = (lanepos1*2)+25
         lanepos3 = (lanepos1*3)+50
         lanepos4 = (lanepos1*4)+75
+
         x_positions = [lanepos1, lanepos2, lanepos3, lanepos4]  # list lane positions
         for x in x_positions:  # create one obstacle per lane
             rect = pygame.Rect(x, 0, *car_w_h)  # start at top of screen

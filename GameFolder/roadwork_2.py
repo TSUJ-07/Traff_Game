@@ -15,6 +15,16 @@ def collision(user_car, obstacles):
             return True
     return False
 
+#In event log
+def event_wait():
+    while True:
+        for i in pygame.event.get(): #Event handling to start game
+            if i.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit(0)
+            elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
+                return #Enter start-up sound --> {Config.MP3["start"].play()}
+
 
 class RoadWork:
     def __init__(self, resolution, grass_width, green):
@@ -40,6 +50,7 @@ def user_movement():
     screen = pygame.display.set_mode(resolution)
     pygame.display.set_caption("Car Game")
     road = RoadWork(resolution, 50, (0, 255, 0))
+
 
     while True:
         for event in pygame.event.get():

@@ -26,6 +26,7 @@ car_w_h = (50, 100)
 user_pos = (225, 625)
 blue = (0, 0, 255)
 green = (0, 255, 0)
+white= (255,255,255)
 speed_min = 1
 speed_max = 6
 player_speed = 5
