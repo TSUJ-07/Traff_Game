@@ -7,7 +7,7 @@ from GameFolder.config_2 import *
 class Traffic:
     def __init__(self):
         self.user_car_rect = pygame.Rect((225, 625), car_w_h)
-        self.user_car_surface = pygame.image.load("Whimsical-Car-Cartoon-Top-View-Graphic-PNG-300x225.png")
+        self.user_car_surface = pygame.image.load("Caleb Stuff/Whimsical-Car-Cartoon-Top-View-Graphic-PNG-300x225.png")
         self.user_car_surface = pygame.transform.scale(self.user_car_surface, car_w_h)
         self.obstacles = []
         self.speeds = []

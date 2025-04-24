@@ -86,6 +86,7 @@ def game_loop():
             display_window(screen)  # Display cover
             #Enter Failure sound --> {Config.MP3["failure"].play()}
             record(player, collide_list) # Highscore
+            failure()
             question= failure()
             if question == "Restart":
                 return game_loop()
