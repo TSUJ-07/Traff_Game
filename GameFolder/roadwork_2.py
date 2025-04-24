@@ -5,7 +5,7 @@ import config_2
 import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
-from GameFolder import HighScore
+import Utilities
 
 
 font = pygame.font.Font(None, 36)
@@ -14,27 +14,13 @@ start_ticka = pygame.time.get_ticks()
 
 pygame.display.set_caption("ANIME X TRAFF")
 
-score = 0
-
 # high_score = HighScore.load_high_score()
 def collision(user_car, obstacles):
     for obstacle in obstacles:
         if user_car.colliderect(obstacle['rect']):
             print("Collision Detected!")
-            config_2.MP3["crash"].play()
             return True
     return False
-
-#In event log
-def event_wait():
-    while True:
-        for i in pygame.event.get(): #Event handling to start game
-            if i.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit(0)
-            elif i.type == pygame.KEYDOWN: #any key pressed then we start up game
-                return #Enter start-up sound --> {Config.MP3["start"].play()}
-
 
 class RoadWork:
     def __init__(self, resolution, grass_width, green):
@@ -61,8 +47,8 @@ def user_movement():
     pygame.display.set_caption("Car Game")
     road = RoadWork(resolution, 50, (0, 255, 0))
 
-
     while True:
+        score= 0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -89,22 +75,30 @@ def user_movement():
                 continue
 
 
-
-
-
         if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
             config_2.MP3["crash"].play()
-            pygame.time.delay(10)
+            Utilities.prep_text(f"Your Score is: {score}", 28, (255,255,0), 4)
+            Utilities.failure()
+            question= Utilities.failure()
+            if question == "Restart":
+                #Create main function to replay entire loop
+                print()
+            else:
+                pygame.quit()
+                sys.exit()
+
+            # pygame.time.delay(10)
+
             # font = pygame.font.Font(None, 48)
-            text_surf = font.render("You Have Crashed!!!", True, (255, 2, 2))
-            text_surf2 = font.render(f"Your Score is: {score}", True, (255, 255, 255))
+            # text_surf = font.render("You Have Crashed!!!", True, (255, 2, 2))
+            # text_surf2 = font.render(f"Your Score is: {score}", True, (255, 255, 255))
             # high_score_surf = font.render(f"High Score: {high_score}", True, (255, 255, 2))
-            text_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 2))
-            text_rect2 = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 3))
-            high_score_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 4))
+            # text_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 2))
+            # text_rect2 = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 3))
+            # high_score_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 4))
             # screen.blit(high_score_surf, high_score_rect)
-            screen.blit(text_surf, text_rect)
-            screen.blit(text_surf2, text_rect2)
+            # screen.blit(text_surf, text_rect)
+            # screen.blit(text_surf2, text_rect2)
             if config_2.MP3["crash"].play():
                 continue
 
@@ -120,7 +114,5 @@ def user_movement():
             score = int(elasped_time * 5 * 14)
             score_surf = font.render(f"Score: {score}", True, (255, 255, 255))
             screen.blit(score_surf, (330, 65))
-
-
         pygame.display.flip()
         clock.tick(60)

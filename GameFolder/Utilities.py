@@ -34,8 +34,8 @@ def event_wait():
 #         prep_text(f"High Score: {high_score}", size=32, color= white)
 
 def failure(): #Created to search options between KEY_r and KEY_q to exit or restart game!!
-    prep_text("You Have Crashed!!!", size=48, color=config_2.red, y_scale=5)
-    prep_text("Press [R] to Restart -- Press [Q] to Quit", size= 32, y_scale= 4)
+    prep_text("You Have Crashed!!!", size=48, color=config_2.red, y_scale=2)
+    prep_text("Press [R] to Restart -- Press [Q] to Quit", size= 32, y_scale= 2)
     while True:
         for event in pygame.event.get(): #event handling for only the restart and quit option
             if event.type == pygame.QUIT:
