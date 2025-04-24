@@ -9,7 +9,7 @@ class Obstacle:
         lanes= random.choice(Config.OBS_LANES)
         self.speed= Config.car_speed_random()
         self.rect= pygame.Rect(
-            lanes - Config.OBS_WIDTH//2, #x
+            lanes - Config.OBS_WIDTH // 2, #x
             -Config.OBS_HEIGHT, #y
             Config.OBS_WIDTH, #object width
             Config.OBS_HEIGHT #object height

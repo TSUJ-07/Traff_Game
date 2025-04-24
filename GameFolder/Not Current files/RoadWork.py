@@ -4,7 +4,7 @@ pygame.init()
 
 class Road_Work:
     def __init__(self):
-        self.grass_left= pygame.Rect(0,0,Config.GRASS, Config.RESOLUTION[1])
+        self.grass_left= pygame.Rect(0, 0, Config.GRASS, Config.RESOLUTION[1])
         self.grass_surface= pygame.Surface((Config.GRASS, Config.RESOLUTION[1]))
 
         # py.Rect(x,y,width,height); its just expanded,

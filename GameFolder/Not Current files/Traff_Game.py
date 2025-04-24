@@ -70,7 +70,7 @@ def game_loop():
     collide_list = []
     player= Player.User()
     road= RoadWork.Road_Work()
-    pygame.time.set_timer(Config.XEVENT,1000)
+    pygame.time.set_timer(Config.XEVENT, 1000)
 
     while True:
         for i in pygame.event.get():
