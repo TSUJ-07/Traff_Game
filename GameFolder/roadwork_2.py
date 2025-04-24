@@ -79,6 +79,7 @@ def user_movement():
             config_2.MP3["crash"].play()
             Utilities.prep_text(f"Your Score is: {score}", 28, (255,255,0), 4)
             Utilities.failure()
+            config_2.MP3["end sound.mp3"].play()
             question= Utilities.failure()
             if question == "Restart":
                 #Create main function to replay entire loop
