@@ -1,13 +1,15 @@
 import pygame
 
-LOAD= pygame.image.load
+def LOAD(location):
+    return pygame.image.load(location)
+
 # dictionary of obstacle car images
 CAR_IMG = {
     "car1": LOAD("img/Silver_MERC.png"),
     "car2": LOAD("img/vecteezy_modern_green.png"),
     "car3": LOAD("img/vecteezy_sport_car.png"),
     "car4": LOAD("img/vecteezy_white_car.png"),
-    "car5": LOAD("img/pinterest-bugatti2.png"),
+    "car5": LOAD("wrist-style-pinterest-bugatti.png"),
     "car6": LOAD("img/PCar.png"),
     "car7": LOAD("img/sport_red.png"),
 }
@@ -32,7 +34,6 @@ user_pos = (225, 625)
 blue = (0, 0, 255)
 green = (0, 255, 0)
 white= (255,255,255)
-red= (255,0,0)
 speed_min = 1
 speed_max = 6
 player_speed = 5
