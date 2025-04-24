@@ -1,10 +1,10 @@
 from roadwork_2 import *
-import Utilities
+import Utilities, roadwork_2
 screen = pygame.display.set_mode(resolution)
 
 def main():
     pygame.init()
-    user_movement()
+    roadwork_2.user_movement()
 
 if __name__ == "__main__":
     Utilities.display_window(screen)

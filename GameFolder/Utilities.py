@@ -8,7 +8,7 @@ def display_window(screen):
     var.fill((128,128,128))
     screen.blit(var, (0,0))
 
-#getting font for transparent start-up window OR any text_layout for the screen; centered
+#getting font
 def prep_text(message= "PRESS ANY KEY TO START", size= 25, color= config_2.white, y_scale= 2):
     fonting = pygame.font.Font(None, size)
     render_text = fonting.render(message, True, color)
@@ -16,7 +16,7 @@ def prep_text(message= "PRESS ANY KEY TO START", size= 25, color= config_2.white
     screen.blit(render_text, shade_window)
     pygame.display.flip()
 
-#In event log
+#event log
 def event_wait():
     while True:
         for i in pygame.event.get(): #Event handling to start game
@@ -34,8 +34,8 @@ def event_wait():
 #         prep_text(f"High Score: {high_score}", size=32, color= white)
 
 def failure(): #Created to search options between KEY_r and KEY_q to exit or restart game!!
-    prep_text("You Have Crashed!!!", size=48, color=config_2.red, y_scale=2)
-    prep_text("Press [R] to Restart -- Press [Q] to Quit", size= 32, y_scale= 2)
+    prep_text("You Have Crashed!!!", size=48, color=config_2.red, y_scale=4)
+    prep_text("Press [R] to Restart -- Press [Q] to Quit", size= 32, y_scale= 3)
     while True:
         for event in pygame.event.get(): #event handling for only the restart and quit option
             if event.type == pygame.QUIT:
@@ -44,7 +44,7 @@ def failure(): #Created to search options between KEY_r and KEY_q to exit or res
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_r:
                     return "Restart"
-                elif event.key == pygame.K_q:
+                if event.key == pygame.K_q:
                     return "Quit"
 # record(player, collide_list) # Highscore
 

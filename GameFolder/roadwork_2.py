@@ -1,4 +1,6 @@
 import pygame
+from pygame.mixer import Channel
+
 pygame.init()
 import sys
 import config_2
@@ -6,6 +8,7 @@ import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
 import Utilities
+import main_2
 
 
 font = pygame.font.Font(None, 36)
@@ -46,9 +49,8 @@ def user_movement():
     screen = pygame.display.set_mode(resolution)
     pygame.display.set_caption("Car Game")
     road = RoadWork(resolution, 50, (0, 255, 0))
-
+    score = 0
     while True:
-        score= 0
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -74,16 +76,20 @@ def user_movement():
             if config_2.MP3["swipe"].play():
                 continue
 
+        crash_channel= pygame.mixer.Channel(1) #Making channels so they play at the same time
+        end_channel= pygame.mixer.Channel(2)
 
         if collision(traffic_obj.user_car_rect, traffic_obj.obstacles):
-            config_2.MP3["crash"].play()
-            Utilities.prep_text(f"Your Score is: {score}", 28, (255,255,0), 4)
+            crash_channel.play(config_2.MP3["crash"])
+            end_channel.play(config_2.MP3["failure"])
+
+            Utilities.prep_text(f"Your Score is: {score}", 28, (255,255,0), 2)
             Utilities.failure()
-            config_2.MP3["end sound.mp3"].play()
+
             question= Utilities.failure()
             if question == "Restart":
                 #Create main function to replay entire loop
-                print()
+                main_2.main()
             else:
                 pygame.quit()
                 sys.exit()
@@ -100,8 +106,8 @@ def user_movement():
             # screen.blit(high_score_surf, high_score_rect)
             # screen.blit(text_surf, text_rect)
             # screen.blit(text_surf2, text_rect2)
-            if config_2.MP3["crash"].play():
-                continue
+            # if config_2.MP3["crash"].play():
+            #     continue
 
         else:
             traffic_obj.update_obstacles()
