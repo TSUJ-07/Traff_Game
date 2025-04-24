@@ -13,8 +13,6 @@ import main_2
 
 font = pygame.font.Font(None, 36)
 
-start_ticka = pygame.time.get_ticks()
-
 pygame.display.set_caption("ANIME X TRAFF")
 
 # high_score = HighScore.load_high_score()
@@ -49,7 +47,9 @@ def user_movement():
     screen = pygame.display.set_mode(resolution)
     pygame.display.set_caption("Car Game")
     road = RoadWork(resolution, 50, (0, 255, 0))
+
     score = 0
+    start_ticka = pygame.time.get_ticks()
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -84,12 +84,10 @@ def user_movement():
             end_channel.play(config_2.MP3["failure"])
 
             Utilities.prep_text(f"Your Score is: {score}", 28, (255,255,0), 2)
-            Utilities.failure()
-
             question= Utilities.failure()
             if question == "Restart":
                 #Create main function to replay entire loop
-                main_2.main()
+                user_movement()
             else:
                 pygame.quit()
                 sys.exit()

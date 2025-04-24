@@ -1,4 +1,5 @@
 from roadwork_2 import *
+import config_2
 
 screen = pygame.display.set_mode(config_2.resolution)
 
@@ -47,13 +48,3 @@ def failure(): #Created to search options between KEY_r and KEY_q to exit or res
                 if event.key == pygame.K_q:
                     return "Quit"
 # record(player, collide_list) # Highscore
-
-# display_window(screen)  # Display cover
-# #Enter Failure sound --> {Config.MP3["failure"].play()}
-# failure()
-# question= failure()
-# if question == "Restart":
-#     return game_loop()
-# else:
-#     pygame.quit()
-#     sys.exit(0)
