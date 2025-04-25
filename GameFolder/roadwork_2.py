@@ -13,7 +13,7 @@ import main_2
 
 font = pygame.font.Font(None, 36)
 
-pygame.display.set_caption("ANIME X TRAFF")
+pygame.display.set_caption("Traffic Game")
 
 # high_score = HighScore.load_high_score()
 def collision(user_car, obstacles):
