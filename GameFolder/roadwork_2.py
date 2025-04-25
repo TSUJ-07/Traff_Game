@@ -45,7 +45,7 @@ def user_movement():
     traffic_obj = Traffic()  # No need to pass resolution here
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode(resolution)
-    pygame.display.set_caption("Car Game")
+    pygame.display.set_caption("Traffic Game")
     road = RoadWork(resolution, 50, (0, 255, 0))
 
     score = 0
