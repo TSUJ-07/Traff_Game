@@ -8,12 +8,10 @@ import pygame.mixer
 from traffic_2 import Traffic
 from GameFolder.config_2 import *
 import Utilities
-import main_2
-
 
 font = pygame.font.Font(None, 36)
 
-pygame.display.set_caption("ANIME X TRAFF")
+pygame.display.set_caption("Car Game")
 
 # high_score = HighScore.load_high_score()
 def collision(user_car, obstacles):
@@ -91,21 +89,6 @@ def user_movement():
             else:
                 pygame.quit()
                 sys.exit()
-
-            # pygame.time.delay(10)
-
-            # font = pygame.font.Font(None, 48)
-            # text_surf = font.render("You Have Crashed!!!", True, (255, 2, 2))
-            # text_surf2 = font.render(f"Your Score is: {score}", True, (255, 255, 255))
-            # high_score_surf = font.render(f"High Score: {high_score}", True, (255, 255, 2))
-            # text_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 2))
-            # text_rect2 = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 3))
-            # high_score_rect = text_surf.get_rect(midtop=(screen.get_width() / 2, screen.get_height() / 4))
-            # screen.blit(high_score_surf, high_score_rect)
-            # screen.blit(text_surf, text_rect)
-            # screen.blit(text_surf2, text_rect2)
-            # if config_2.MP3["crash"].play():
-            #     continue
 
         else:
             traffic_obj.update_obstacles()

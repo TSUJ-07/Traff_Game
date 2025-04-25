@@ -8,6 +8,7 @@ def main():
 
 if __name__ == "__main__":
     Utilities.display_window(screen)
+    Utilities.prep_text("Press move A and D Key to move", 25, config_2.white, y_scale=3)
     Utilities.prep_text()
     Utilities.event_wait()
     main()

@@ -3,7 +3,6 @@ import pygame.mixer
 from GameFolder.config_2 import *
 
 
-
 class Traffic:
     def __init__(self):
         self.user_car_rect = pygame.Rect((225, 625), car_w_h)
